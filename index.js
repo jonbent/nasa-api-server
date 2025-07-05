@@ -44,6 +44,10 @@ app.get('/planetary/apod', async (req, res) => {
     const url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}&start_date=${startDate}&end_date=${endDate}`
     const nasaResponse = await fetch(url);
     console.log(nasaResponse);
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
+
     res.statusCode = nasaResponse.status;
     res.json(await nasaResponse.json());
   } catch(e){

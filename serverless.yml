@@ -1,0 +1,19 @@
+service: my-lambda-api
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-west-1
+  environment:
+    NASA_API_KEY: ${env:NASA_API_KEY}
+
+functions:
+  apod:
+    handler: lambda.handler
+    events:
+      - http:
+          path: planetary/apod
+          method: get
+
+plugins:
+  - serverless-offline

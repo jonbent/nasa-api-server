@@ -54,3 +54,5 @@ app.get('/planetary/apod', async (req, res) => {
 app.listen(port, () => {
 
 })
+
+module.exports = app;
